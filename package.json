@@ -1,0 +1,31 @@
+{
+  "name": "linear-http",
+  "version": "1.0.0",
+  "description": "A high-performance, zero-dependency Node.js framework with Fastify-like encapsulation.",
+  "type": "module",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "http",
+    "framework",
+    "router",
+    "radix-tree",
+    "fastify",
+    "middleware",
+    "microservice"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "README.md",
+    "LICENSE"
+  ]
+}
