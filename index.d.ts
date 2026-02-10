@@ -21,23 +21,29 @@ export interface Context {
   setHeader(name: string, value: string | number): this;
   json(data: any): Promise<void>;
   send(data: any): Promise<void>;
+  redirect(url: string, code?: number): void;
   [key: string]: any; // Allow custom decorators
 }
 
 export type Handler = (ctx: Context) => void | Promise<void>;
 export type HookHandler = (ctx: Context) => void | Promise<void>;
 export type Plugin = (instance: LinearInstance, options: any) => Promise<void>;
+export type ValidatorCompiler = (schema: any) => (data: any) => any;
 
 export interface LinearInstance {
   server: Server | null;
   config: LinearOptions;
   
+  // Extension methods
   decorate(name: string, value: any): this;
   use(middleware: Handler): this;
   addHook(name: 'onRequest' | 'preValidation' | 'preHandler' | 'onSend' | 'onResponse' | 'onError' | 'onTimeout', fn: HookHandler): this;
+  setValidatorCompiler(compiler: ValidatorCompiler): this;
   
+  // Registration
   register(plugin: Plugin, options?: { prefix?: string }): Promise<this>;
   
+  // Routing
   get(path: string, handler: Handler): void;
   get(path: string, schema: any, handler: Handler): void;
   
